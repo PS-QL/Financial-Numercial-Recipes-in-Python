@@ -1,0 +1,36 @@
+﻿% * Example on "Time Value of Money"
+% 
+% Welcome! This EMT notebook demo uses my python script psql.py, which
+% is inspired from chapter 3 of Bernt Arne Odegaard's book "Financial
+% Numercial Recipes in  C++" April 2007 edition We will first call the
+% underlying codes by import command
+% 
+% In this EMT notebook, we are calling python 3.8 commands Please check
+% official website of EMT to know "How to call python 3.8 in EMT"
+% 
+>>> import psql
+% 
+% We can define data list for using them as function paramters
+>>> CF = [-100, 75, 75]  
+>>> time = [0, 1, 2]
+>>> r4discount = 0.10
+% 
+% Now we are ready to call functions from psql script
+% 
+>// Example 1 : One interest with discrete discounting
+>>> : psql.pv_discrete(CF,time,r4discount) 
+30.165289256198328
+% 
+>// Example 2 : One interest with continous discounting
+>>> : psql.pv_continous(CF,time,r4discount)
+29.2676128335456
+% 
+>// Example 3 : Finding Internal rate of returns using discrete discounting 
+>>> time = [0,1,2]
+>>> CF = [-100,10,110]
+>>> NPV = psql.pv_discrete(CF,time,0.05)
+>>> r= psql.irr(CF,time)
+>>> print("Present value, 5% discretely discounted interest = ", NPV ,"\n and Internal rate of return, discrete discounting = ", r )
+Present value, 5% discretely discounted interest =  9.297052154195 
+ and Internal rate of return, discrete discounting =  0.1
+>
